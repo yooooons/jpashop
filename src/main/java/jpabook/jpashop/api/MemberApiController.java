@@ -62,9 +62,11 @@ public class MemberApiController {
 
     @Data
     @AllArgsConstructor
+    //api결과
     static class Result<T> {
         private T data;
     }
+
 
     @Data
     @AllArgsConstructor
