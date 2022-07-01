@@ -1,8 +1,6 @@
 package jpabook;
 
-import jpabook.jpashop.domain.Address;
-import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.domain.OrderItem;
+import jpabook.jpashop.domain.*;
 import jpabook.jpashop.domain.item.Book;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -45,7 +43,13 @@ public class InitDb {
             book2.setStockQuantity(200);
             em.persist(book2);
 
+            OrderItem orderItem1 = OrderItem.createOrderItem(book1, 10000, 1);
+            OrderItem orderItem2 = OrderItem.createOrderItem(book1, 20000, 2);
 
+            Delivery delivery = new Delivery();
+            delivery.setAddress(member.getAddress());
+            Order order = Order.createOrder(member, delivery, orderItem1, orderItem2);
+            em.persist(order);
         }
     }
 }
