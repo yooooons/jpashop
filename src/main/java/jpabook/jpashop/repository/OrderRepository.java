@@ -1,6 +1,5 @@
 package jpabook.jpashop.repository;
 
-import jpabook.jpashop.api.OrderSimpleApiController;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import lombok.RequiredArgsConstructor;
@@ -101,7 +100,12 @@ public class OrderRepository {
     }
 
 
-    public List<OrderSimpleApiController.SimpleOrderDto> findOrderDtos() {
-
+    public List<OrderSimpleQueryDto> findOrderDtos() {
+        return em.createQuery("select o from Order o " +
+                "join o.member m " +
+                "join o.delivery d", OrderSimpleQueryDto.class)
+                .getResultList();
     }
+
+
 }
