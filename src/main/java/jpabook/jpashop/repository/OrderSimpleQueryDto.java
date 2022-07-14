@@ -17,12 +17,20 @@ public class OrderSimpleQueryDto {
         private OrderStatus orderStatus;
         private Address address;
 
-        public OrderSimpleQueryDto(Order order) {
+    public OrderSimpleQueryDto(Long orderId, String name, LocalDateTime orderDate, OrderStatus orderStatus, Address address) {
+        this.orderId = orderId;
+        this.name = name;
+        this.orderDate = orderDate;
+        this.orderStatus = orderStatus;
+        this.address = address;
+    }
+
+   /* public OrderSimpleQueryDto(Order order) {
             orderId = order.getId();
             name = order.getMember().getName();//lazy 초기화
             orderDate = order.getOrderDate();
             orderStatus = order.getStatus();
             address = order.getDelivery().getAddress();//lazy 초기화
 
-    }
+    }*/
 }
